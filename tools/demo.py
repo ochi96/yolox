@@ -37,6 +37,8 @@ def make_parser():
         help="whether to save the inference result of image/video",
     )
 
+    parser.add_argument("--output", type=str, help="output folder")
+
     # exp file
     parser.add_argument(
         "-f",
@@ -250,7 +252,7 @@ def main(exp, args):
 
     vis_folder = None
     if args.save_result:
-        vis_folder = os.path.join(file_name, "vis_res")
+        vis_folder = os.path.join(args.output, "vis_res")
         os.makedirs(vis_folder, exist_ok=True)
 
     if args.trt:
